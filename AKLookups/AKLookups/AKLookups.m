@@ -69,10 +69,11 @@
 	[super layoutSubviews];
 	NSString *title = [(id<AKLookupsCapableItem>)_items[_selectedItemIdx] lookupTitle];
 	CGFloat x = CGRectGetMidX(self.bounds) + [title sizeWithMyFont:self.titleLabel.font].width/2;
-	_arrowIndicator.frame = CGRectMake(x + 10,
-										CGRectGetMidY(self.bounds) - 3,
-										10,
-										10);
+	_arrowIndicator.frame = CGRectMake(x + 10 + self.titleEdgeInsets.left - self.titleEdgeInsets.right,
+									   CGRectGetMidY(self.bounds) - 3 + self.titleEdgeInsets.top/2 - self.titleEdgeInsets.bottom/2,
+									   10,
+									   10);
+
 }
 
 -(void)openLookup

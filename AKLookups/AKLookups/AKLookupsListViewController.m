@@ -32,7 +32,7 @@
 	_tableView.scrollEnabled = NO;
 	_tableView.backgroundColor = [UIColor whiteColor];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:_tableView];
 	self.view.clipsToBounds = YES;
 }
@@ -87,14 +87,14 @@
 		_dimmingOverlayView.alpha = 1;
 		[_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:_selectedItemIdx inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
 	} completion:^(BOOL finished) {
-		_tableView.scrollEnabled = [self isContentFits];
+		_tableView.scrollEnabled = ![self isContentFits];
 		[_tableView flashScrollIndicators];
 	}];
 }
 
 -(BOOL)isContentFits
 {
-	return [self spaceBelow] < [self lookupsListHeight];
+	return [self spaceBelow] > [self lookupsListHeight];
 	
 }
 
