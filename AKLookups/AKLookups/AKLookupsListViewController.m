@@ -14,7 +14,7 @@
 
 @interface AKLookupsListViewController ()
 {
-	UITableView *_tableView;
+	UITableView *_tableView; //TODO insert tv into content view, which slides when list presented
 	UIView *_dimmingOverlayView;
 	UITapGestureRecognizer * _tap;
 	__weak AKLookups *_lookupsButton;
@@ -66,7 +66,7 @@
 	[self setupBackground];
 	
 	UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
-	[rootVC addChildViewController:self];
+	[rootVC addChildViewController:self]; //TODO check if rootVC.shouldAutomaticallyForwardAppearanceMethods is YES, call view appearance callbacks manually 
 	[self didMoveToParentViewController:rootVC];
 	
 	UIView *rootView = rootVC.view;
