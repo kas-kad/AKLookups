@@ -6,13 +6,24 @@
 //  Copyright (c) 2014 Andrey Kadochnikov. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "AKLookups.h"
+#import "AKDropdownViewController.h"
+#define PERFECT_CELL_HEIGHT 53.0f
 
-@interface AKLookupsListViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@protocol AKLookupsDatasource <NSObject>
+@required
+-(NSArray*)lookupsItems;
+-(id<AKLookupsCapableItem>)lookupsSelectedItem;
+@end
+
+@protocol AKLookupsListDelegate <AKLookupsDelegate>
+-(void)lookups:(AKDropdownViewController*)lookups didSelectItem:(id<AKLookupsCapableItem>)item;
+@end
+
+@interface AKLookupsListViewController : AKDropdownViewController
 @property (nonatomic, strong) NSArray *items;
-@property (nonatomic, assign) NSUInteger selectedItemIdx;
-@property (nonatomic, assign) CGFloat bottomMargin;
--(void)showListFromLookupsButton:(AKLookups*)lookupsButton;
--(void)dismiss;
+@property (nonatomic, weak) id<AKLookupsListDelegate> delegate;
+@property (nonatomic, weak) id<AKLookupsDatasource> dataSource;
+@property (nonatomic, readonly) UITableView *tableView;
+
+-(void)configureCell:(UITableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath;
 @end

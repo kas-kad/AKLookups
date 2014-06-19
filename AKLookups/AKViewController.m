@@ -9,16 +9,22 @@
 #import "AKMeme.h"
 #import "AKViewController.h"
 #import "AKLookups.h"
-@interface AKViewController () <AKLookupsDatasource, AKLookupsDelegate>
+#import "AKLookupsListViewController.h"
+@interface AKViewController () <AKLookupsDatasource, AKLookupsListDelegate>
 {
 	NSArray *_items;
-	UIImageView *_carLogoView;
+	UIImageView *_memeImageView;
+	AKMeme *_selectedMeme;
+	AKLookups *_memeLookupBtn;
+	BOOL _menuPresented;
+	AKLookupsListViewController *_listVC;
 }
 @end
 
 @implementation AKViewController
 
--(id)init{
+-(id)init
+{
 	if (self = [super init]){
 		_items = @[[AKMeme memeWithTitle:@"Forever Alone" imageName:@"fa.jpg"],
 				   [AKMeme memeWithTitle:@"Trollface" imageName:@"tf.jpg"],
@@ -30,28 +36,74 @@
 	}
 	return self;
 }
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	_carLogoView = [[UIImageView alloc] initWithFrame:CGRectMake(60.0f, 20.0f, 200.0f, 200.0f)];
-	_carLogoView.backgroundColor = [UIColor lightGrayColor];
-	[self.view addSubview: _carLogoView];
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStylePlain target:self action:@selector(showMenu:)];
+	_memeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(60.0f, 64.0f, 200.0f, 200.0f)];
+	_memeImageView.backgroundColor = [UIColor lightGrayColor];
+	[self.view addSubview: _memeImageView];
 	
-	AKLookups *carModelLookup = [[AKLookups alloc] initWithDelegate:self datasource:self];
-	carModelLookup.frame = CGRectMake(15.0f, 220.0f, 290.0f, 44.0f);
-	carModelLookup.bottomMargin = 15.0f;
-	[carModelLookup setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-	[carModelLookup setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
-	[carModelLookup setBackgroundColor:[UIColor lightGrayColor]];
-	[self.view addSubview:carModelLookup];
+
+	_memeLookupBtn = [[AKLookups alloc] initWithLookupViewController:self.listVC];
+	_memeLookupBtn.frame = CGRectMake(15.0f, CGRectGetMaxY( _memeImageView.frame ), 290.0f, 44.0f);
+	_memeLookupBtn.bottomMargin = 15.0f;
+	[_memeLookupBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+	[_memeLookupBtn setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+	[_memeLookupBtn setBackgroundColor:[UIColor lightGrayColor]];
+	[self.view addSubview:_memeLookupBtn];
 }
 
--(NSArray *)lookupsItems{
+#pragma mark - Lookup datasource
+-(NSArray *)lookupsItems
+{
 	return _items;
 }
 
--(void)lookups:(AKLookups *)lookups didSelectItemAtIndex:(NSUInteger)index{
-	AKMeme *ameme = _items[index];
-	_carLogoView.image = [UIImage imageNamed:ameme.imageName];
+-(id<AKLookupsCapableItem>)lookupsSelectedItem
+{
+	return _selectedMeme;
+}
+
+#pragma mark - Lookup delegate
+-(void)lookups:(AKDropdownViewController *)lookups didSelectItem:(id<AKLookupsCapableItem>)item
+{
+	_selectedMeme = (AKMeme*)item;
+	_memeImageView.image = [UIImage imageNamed:_selectedMeme.imageName];
+	[_memeLookupBtn selectItem:item];
+	[_memeLookupBtn closeLookup];
+}
+-(void)lookupsDidOpen:(AKDropdownViewController *)lookups
+{
+	_menuPresented = YES;
+}
+-(void)lookupsDidClose:(AKDropdownViewController *)lookups
+{
+	_menuPresented = NO;
+}
+-(void)lookupsDidCancel:(AKDropdownViewController *)lookups
+{
+	[_memeLookupBtn closeAnimation];
+	_menuPresented = NO;
+}
+
+#pragma mark - Helpers
+-(void)showMenu:(id)sender
+{
+	if (!_menuPresented){
+		[self.listVC showDropdownViewBelowView:self.navigationController.navigationBar];
+		_menuPresented = YES;
+	}
+}
+
+-(AKLookupsListViewController*)listVC
+{
+	if (!_listVC){
+		_listVC = [[AKLookupsListViewController alloc] initWithParentViewController:self.navigationController];
+		_listVC.dataSource = self;
+		_listVC.delegate = self;
+	}
+	return _listVC;
 }
 @end

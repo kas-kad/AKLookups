@@ -15,30 +15,31 @@
 	NSArray*						_items;
 	UIImageView* 					_arrowIndicator; //TODO easy color customization and highlighted state needed
 	BOOL 							_isOpened;
-	AKLookupsListViewController* 	_list;
+	AKDropdownViewController*		_lookupVC;
 }
 @end
 
 @implementation AKLookups
 
--(instancetype)initWithDelegate:(id<AKLookupsDelegate>)delegate datasource:(id<AKLookupsDatasource>)datasource{
-	NSAssert(delegate && datasource, @"delegate and datasource are mandatory");
+-(instancetype)initWithLookupViewController:(AKDropdownViewController*)viewController
+{
+	NSAssert(viewController, @"viewController is mandatory");
+	NSAssert([viewController isKindOfClass:[AKDropdownViewController class]], @"viewController must be a subclass of AKDropdownViewController");
 	self = [super init];
 	if (self){
-		_delegate = delegate;
-		_dataSource = datasource;
-		_items = [datasource lookupsItems];
-		_selectedItemIdx = 0;
+		_lookupVC = viewController;
+		_selectedItem = nil;
 		[self addTarget:self action:@selector(pressed) forControlEvents:UIControlEventTouchUpInside];
-
+		
 		_arrowIndicator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"selector_btn_arrow"]];
 		_arrowIndicator.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 		_arrowIndicator.contentMode = UIViewContentModeCenter;
 		[self addSubview:_arrowIndicator];
-		[self selectItemAtIndex:_selectedItemIdx];
+		[self selectItem:_selectedItem];
 	}
 	return self;
 }
+
 
 -(void)pressed
 {
@@ -49,43 +50,33 @@
 	}
 }
 
--(void)selectItemAtIndex:(NSUInteger)index
+-(void)selectItem:(id<AKLookupsCapableItem>)item
 {
-	_selectedItemIdx = index;
-	[self setTitle:[(id<AKLookupsCapableItem>)_items[index] lookupTitle] forState:UIControlStateNormal];
-	if ([self.delegate respondsToSelector:@selector(lookups:didSelectItemAtIndex:)]){
-		[self.delegate lookups:self didSelectItemAtIndex:index];
-	}
-	
-	if (_isOpened){
-		[self closeLookup];
-	}
-	
-	[self setNeedsLayout];
+	_selectedItem = item;
+	[self setTitle:[(id<AKLookupsCapableItem>)item lookupTitle] forState:UIControlStateNormal];
 }
 
 -(void)layoutSubviews
 {
 	[super layoutSubviews];
-	NSString *title = [(id<AKLookupsCapableItem>)_items[_selectedItemIdx] lookupTitle];
+	NSString *title;
+	title = [_selectedItem lookupTitle];
 	CGFloat x = CGRectGetMidX(self.bounds) + [title sizeWithMyFont:self.titleLabel.font].width/2;
 	_arrowIndicator.frame = CGRectMake(x + 10 + self.titleEdgeInsets.left - self.titleEdgeInsets.right,
-									   CGRectGetMidY(self.bounds) - 3 + self.titleEdgeInsets.top/2 - self.titleEdgeInsets.bottom/2,
+									   CGRectGetMidY(self.bounds) - 4 + self.titleEdgeInsets.top/2 - self.titleEdgeInsets.bottom/2,
 									   10,
 									   10);
-
 }
 
 -(void)openLookup
 {
-	if ([_delegate respondsToSelector:@selector(lookupsWillOpen:)]){
-		[_delegate lookupsWillOpen:self];
-	}
-	
-	_list = [AKLookupsListViewController new];
-	_list.bottomMargin = _bottomMargin;
-	[_list showListFromLookupsButton:self];
-	
+	_lookupVC.bottomMargin = _bottomMargin;
+	[_lookupVC showDropdownViewBelowView:self];
+	[self openAnimation];
+}
+
+-(void)openAnimation
+{
 	CABasicAnimation *openRotationAnimation;
 	openRotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
 	openRotationAnimation.fromValue = 0;
@@ -97,21 +88,16 @@
 	[_arrowIndicator.layer addAnimation:openRotationAnimation forKey:@"openRotationAnimation"];
 	
 	_isOpened = !_isOpened;
-	
-	if ([_delegate respondsToSelector:@selector(lookupsDidOpen:)]){ // TODO this should be placed into list animation completion block
-		[_delegate lookupsDidOpen:self];
-	}
 }
 
 -(void)closeLookup
 {
-	if ([_delegate respondsToSelector:@selector(lookupsWillClose:)]){
-		[_delegate lookupsWillClose:self];
-	}
-	
-	[_list dismiss];
-    _list = nil;
-	
+	[_lookupVC dismiss];
+	[self closeAnimation];
+}
+
+-(void)closeAnimation
+{
 	CABasicAnimation *closeRotationAnimation;
 	closeRotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
 	closeRotationAnimation.fromValue = [NSNumber numberWithFloat:M_PI];
@@ -123,9 +109,5 @@
 	[_arrowIndicator.layer addAnimation:closeRotationAnimation forKey:@"closeRotationAnimation"];
 	
 	_isOpened = !_isOpened;
-	
-	if ([_delegate respondsToSelector:@selector(lookupsDidClose:)]){ // TODO this should be placed into list animation completion block
-		[_delegate lookupsDidClose:self];
-	}
 }
 @end
