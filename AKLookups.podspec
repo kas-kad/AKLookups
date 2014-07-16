@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.description  = "AKLookups class implements a drop-down list for selecting particular value of set."
   s.homepage     = "https://github.com/purrrminator/AKLookups"
   s.screenshots  = "http://cdn.makeagif.com/media/5-17-2014/GlTvIy.gif"
-  s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
+  s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author             = { "Andrey Kadochnikov" => "kaskaaddnb@gmail.com" }
   s.social_media_url   = "http://twitter.com/purrrminator"
   s.platform     = :ios, "7.0"
