@@ -7,8 +7,9 @@ AKLookups class implements a drop-down list for selecting particular value of se
 
 ###Installing using CocoaPods
 Add the following to your Podfile.
-
-```pod 'AKLookups', '~> 1.0'```
+```ruby
+pod 'AKLookups', '~> 1.0'
+```
 
 
 ###Demo
