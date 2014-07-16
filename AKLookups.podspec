@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "AKLookups"
-  s.version      = "0.9.0"
+  s.version      = "1.0.0"
   s.summary      = "drop-down list for selecting items"
   s.description  = "AKLookups class implements a drop-down list for selecting particular value of set."
   s.homepage     = "https://github.com/purrrminator/AKLookups"
