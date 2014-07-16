@@ -48,7 +48,6 @@
 
 	_memeLookupBtn = [[AKLookups alloc] initWithLookupViewController:self.listVC];
 	_memeLookupBtn.frame = CGRectMake(15.0f, CGRectGetMaxY( _memeImageView.frame ), 290.0f, 44.0f);
-	_memeLookupBtn.bottomMargin = 15.0f;
 	[_memeLookupBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 	[_memeLookupBtn setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
 	[_memeLookupBtn setBackgroundColor:[UIColor lightGrayColor]];
@@ -103,6 +102,7 @@
 		_listVC = [[AKLookupsListViewController alloc] initWithParentViewController:self.navigationController];
 		_listVC.dataSource = self;
 		_listVC.delegate = self;
+		_listVC.bottomMargin = 15.0f;
 	}
 	return _listVC;
 }

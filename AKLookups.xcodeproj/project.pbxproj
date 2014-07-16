@@ -20,13 +20,13 @@
 		B9A89C9219277E6D00FC5283 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A89C7419277E6D00FC5283 /* UIKit.framework */; };
 		B9A89C9A19277E6D00FC5283 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B9A89C9819277E6D00FC5283 /* InfoPlist.strings */; };
 		B9A89C9C19277E6D00FC5283 /* AKLookupsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A89C9B19277E6D00FC5283 /* AKLookupsTests.m */; };
-		B9A89CA81927812200FC5283 /* AKLookups.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A89CA71927812200FC5283 /* AKLookups.m */; };
 		B9A89CAE19278E5700FC5283 /* AKMeme.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A89CAD19278E5700FC5283 /* AKMeme.m */; };
-		B9C44E2E19534F0200A0037E /* AKLookupsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C44E2D19534F0200A0037E /* AKLookupsListViewController.m */; };
-		B9C44E3119534F1000A0037E /* AKDropdownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C44E3019534F1000A0037E /* AKDropdownViewController.m */; };
-		B9E667301927AB5C006F6E52 /* selector_btn_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E6672E1927AB5C006F6E52 /* selector_btn_arrow.png */; };
-		B9E667311927AB5C006F6E52 /* selector_btn_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E6672F1927AB5C006F6E52 /* selector_btn_arrow@2x.png */; };
-		B9E667341927ACD5006F6E52 /* NSString+StringSizeWithFont.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E667331927ACD5006F6E52 /* NSString+StringSizeWithFont.m */; };
+		B9A939C7197696ED0027C879 /* AKDropdownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A939C0197696ED0027C879 /* AKDropdownViewController.m */; };
+		B9A939C8197696ED0027C879 /* AKLookups.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A939C2197696ED0027C879 /* AKLookups.m */; };
+		B9A939C9197696ED0027C879 /* AKLookupsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A939C4197696ED0027C879 /* AKLookupsListViewController.m */; };
+		B9A939CA197696ED0027C879 /* NSString+StringSizeWithFont.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A939C6197696ED0027C879 /* NSString+StringSizeWithFont.m */; };
+		B9A939CD197696F40027C879 /* selector_btn_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = B9A939CB197696F40027C879 /* selector_btn_arrow.png */; };
+		B9A939CE197696F40027C879 /* selector_btn_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9A939CC197696F40027C879 /* selector_btn_arrow@2x.png */; };
 		B9E6674C1927C11B006F6E52 /* do.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B9E667441927C11B006F6E52 /* do.jpg */; };
 		B9E6674D1927C11B006F6E52 /* fa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B9E667451927C11B006F6E52 /* fa.jpg */; };
 		B9E6674E1927C11B006F6E52 /* mg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B9E667461927C11B006F6E52 /* mg.jpg */; };
@@ -65,18 +65,18 @@
 		B9A89C9719277E6D00FC5283 /* AKLookupsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AKLookupsTests-Info.plist"; sourceTree = "<group>"; };
 		B9A89C9919277E6D00FC5283 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B9A89C9B19277E6D00FC5283 /* AKLookupsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AKLookupsTests.m; sourceTree = "<group>"; };
-		B9A89CA61927812200FC5283 /* AKLookups.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKLookups.h; sourceTree = "<group>"; };
-		B9A89CA71927812200FC5283 /* AKLookups.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKLookups.m; sourceTree = "<group>"; };
 		B9A89CAC19278E5700FC5283 /* AKMeme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKMeme.h; sourceTree = "<group>"; };
 		B9A89CAD19278E5700FC5283 /* AKMeme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKMeme.m; sourceTree = "<group>"; };
-		B9C44E2C19534F0200A0037E /* AKLookupsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKLookupsListViewController.h; sourceTree = "<group>"; };
-		B9C44E2D19534F0200A0037E /* AKLookupsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKLookupsListViewController.m; sourceTree = "<group>"; };
-		B9C44E2F19534F1000A0037E /* AKDropdownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKDropdownViewController.h; sourceTree = "<group>"; };
-		B9C44E3019534F1000A0037E /* AKDropdownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKDropdownViewController.m; sourceTree = "<group>"; };
-		B9E6672E1927AB5C006F6E52 /* selector_btn_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selector_btn_arrow.png; sourceTree = "<group>"; };
-		B9E6672F1927AB5C006F6E52 /* selector_btn_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selector_btn_arrow@2x.png"; sourceTree = "<group>"; };
-		B9E667321927ACD5006F6E52 /* NSString+StringSizeWithFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StringSizeWithFont.h"; sourceTree = "<group>"; };
-		B9E667331927ACD5006F6E52 /* NSString+StringSizeWithFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StringSizeWithFont.m"; sourceTree = "<group>"; };
+		B9A939BF197696ED0027C879 /* AKDropdownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKDropdownViewController.h; path = Classes/AKDropdownViewController.h; sourceTree = SOURCE_ROOT; };
+		B9A939C0197696ED0027C879 /* AKDropdownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKDropdownViewController.m; path = Classes/AKDropdownViewController.m; sourceTree = SOURCE_ROOT; };
+		B9A939C1197696ED0027C879 /* AKLookups.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKLookups.h; path = Classes/AKLookups.h; sourceTree = SOURCE_ROOT; };
+		B9A939C2197696ED0027C879 /* AKLookups.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKLookups.m; path = Classes/AKLookups.m; sourceTree = SOURCE_ROOT; };
+		B9A939C3197696ED0027C879 /* AKLookupsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AKLookupsListViewController.h; path = Classes/AKLookupsListViewController.h; sourceTree = SOURCE_ROOT; };
+		B9A939C4197696ED0027C879 /* AKLookupsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AKLookupsListViewController.m; path = Classes/AKLookupsListViewController.m; sourceTree = SOURCE_ROOT; };
+		B9A939C5197696ED0027C879 /* NSString+StringSizeWithFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+StringSizeWithFont.h"; path = "Classes/NSString+StringSizeWithFont.h"; sourceTree = SOURCE_ROOT; };
+		B9A939C6197696ED0027C879 /* NSString+StringSizeWithFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+StringSizeWithFont.m"; path = "Classes/NSString+StringSizeWithFont.m"; sourceTree = SOURCE_ROOT; };
+		B9A939CB197696F40027C879 /* selector_btn_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = selector_btn_arrow.png; path = Resources/selector_btn_arrow.png; sourceTree = SOURCE_ROOT; };
+		B9A939CC197696F40027C879 /* selector_btn_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "selector_btn_arrow@2x.png"; path = "Resources/selector_btn_arrow@2x.png"; sourceTree = SOURCE_ROOT; };
 		B9E667441927C11B006F6E52 /* do.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = do.jpg; sourceTree = "<group>"; };
 		B9E667451927C11B006F6E52 /* fa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fa.jpg; sourceTree = "<group>"; };
 		B9E667461927C11B006F6E52 /* mg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mg.jpg; sourceTree = "<group>"; };
@@ -190,16 +190,16 @@
 		B9A89CA5192780B800FC5283 /* AKLookups */ = {
 			isa = PBXGroup;
 			children = (
-				B9C44E2F19534F1000A0037E /* AKDropdownViewController.h */,
-				B9C44E3019534F1000A0037E /* AKDropdownViewController.m */,
-				B9C44E2C19534F0200A0037E /* AKLookupsListViewController.h */,
-				B9C44E2D19534F0200A0037E /* AKLookupsListViewController.m */,
-				B9E667321927ACD5006F6E52 /* NSString+StringSizeWithFont.h */,
-				B9E667331927ACD5006F6E52 /* NSString+StringSizeWithFont.m */,
-				B9E6672E1927AB5C006F6E52 /* selector_btn_arrow.png */,
-				B9E6672F1927AB5C006F6E52 /* selector_btn_arrow@2x.png */,
-				B9A89CA61927812200FC5283 /* AKLookups.h */,
-				B9A89CA71927812200FC5283 /* AKLookups.m */,
+				B9A939CB197696F40027C879 /* selector_btn_arrow.png */,
+				B9A939CC197696F40027C879 /* selector_btn_arrow@2x.png */,
+				B9A939BF197696ED0027C879 /* AKDropdownViewController.h */,
+				B9A939C0197696ED0027C879 /* AKDropdownViewController.m */,
+				B9A939C1197696ED0027C879 /* AKLookups.h */,
+				B9A939C2197696ED0027C879 /* AKLookups.m */,
+				B9A939C3197696ED0027C879 /* AKLookupsListViewController.h */,
+				B9A939C4197696ED0027C879 /* AKLookupsListViewController.m */,
+				B9A939C5197696ED0027C879 /* NSString+StringSizeWithFont.h */,
+				B9A939C6197696ED0027C879 /* NSString+StringSizeWithFont.m */,
 			);
 			path = AKLookups;
 			sourceTree = "<group>";
@@ -295,17 +295,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9A939CE197696F40027C879 /* selector_btn_arrow@2x.png in Resources */,
 				B9E6674E1927C11B006F6E52 /* mg.jpg in Resources */,
 				B9E667521927C11B006F6E52 /* ym.jpg in Resources */,
 				B9E6674C1927C11B006F6E52 /* do.jpg in Resources */,
 				B9E667501927C11B006F6E52 /* tf.jpg in Resources */,
-				B9E667311927AB5C006F6E52 /* selector_btn_arrow@2x.png in Resources */,
 				B9E6674F1927C11B006F6E52 /* og.jpg in Resources */,
 				B9E667531927C11B006F6E52 /* yu.jpg in Resources */,
 				B9E6674D1927C11B006F6E52 /* fa.jpg in Resources */,
 				B9A89C8919277E6D00FC5283 /* Images.xcassets in Resources */,
 				B9A89C7B19277E6D00FC5283 /* InfoPlist.strings in Resources */,
-				B9E667301927AB5C006F6E52 /* selector_btn_arrow.png in Resources */,
+				B9A939CD197696F40027C879 /* selector_btn_arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,14 +324,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9A939CA197696ED0027C879 /* NSString+StringSizeWithFont.m in Sources */,
 				B9A89C8119277E6D00FC5283 /* AKAppDelegate.m in Sources */,
 				B9A89C8719277E6D00FC5283 /* AKViewController.m in Sources */,
 				B9A89CAE19278E5700FC5283 /* AKMeme.m in Sources */,
 				B9A89C7D19277E6D00FC5283 /* main.m in Sources */,
-				B9E667341927ACD5006F6E52 /* NSString+StringSizeWithFont.m in Sources */,
-				B9C44E3119534F1000A0037E /* AKDropdownViewController.m in Sources */,
-				B9C44E2E19534F0200A0037E /* AKLookupsListViewController.m in Sources */,
-				B9A89CA81927812200FC5283 /* AKLookups.m in Sources */,
+				B9A939C7197696ED0027C879 /* AKDropdownViewController.m in Sources */,
+				B9A939C9197696ED0027C879 /* AKLookupsListViewController.m in Sources */,
+				B9A939C8197696ED0027C879 /* AKLookups.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,7 +17,6 @@
 
 @interface AKLookups : UIButton
 @property (nonatomic, strong) id<AKLookupsCapableItem> selectedItem;
-@property (nonatomic, assign) CGFloat bottomMargin;
 
 -(instancetype)initWithLookupViewController:(AKDropdownViewController*)viewController;
 -(void)closeAnimation;

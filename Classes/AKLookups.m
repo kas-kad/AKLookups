@@ -70,7 +70,6 @@
 
 -(void)openLookup
 {
-	_lookupVC.bottomMargin = _bottomMargin;
 	[_lookupVC showDropdownViewBelowView:self];
 	[self openAnimation];
 }

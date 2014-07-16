@@ -205,7 +205,6 @@
 {
     CGPoint tapPoint = [tapRecognizer locationInView:_maskingView];
     UIView * clickedView = [_maskingView hitTest:tapPoint withEvent:nil];
-	NSLog(@"%@", clickedView);
     if(!clickedView)
     {
 		[self closeCancel];
