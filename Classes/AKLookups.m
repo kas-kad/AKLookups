@@ -59,13 +59,32 @@
 -(void)layoutSubviews
 {
 	[super layoutSubviews];
-	NSString *title;
-	title = [_selectedItem lookupTitle];
-	CGFloat x = CGRectGetMidX(self.bounds) + [title sizeWithMyFont:self.titleLabel.font].width/2;
-	_arrowIndicator.frame = CGRectMake(x + 10 + self.titleEdgeInsets.left - self.titleEdgeInsets.right,
-									   CGRectGetMidY(self.bounds) - 4 + self.titleEdgeInsets.top/2 - self.titleEdgeInsets.bottom/2,
-									   10,
-									   10);
+    
+    NSString *title;
+    title = [_selectedItem lookupTitle];
+    
+    CGFloat x = 0;
+    static int margin = 25;
+    switch (self.arrowPosition) {
+        case AKLookupsArrowPositionAfterTitle:
+            x = CGRectGetMidX(self.bounds) + [title sizeWithMyFont:self.titleLabel.font].width/2;
+            break;
+        case AKLookupsArrowPositionRight:
+            x = CGRectGetWidth(self.frame) - CGRectGetWidth(_arrowIndicator.frame) - margin;
+            break;
+        case AKLookupsArrowPositionLeft:
+            x = margin;
+            break;
+        default:
+            NSLog(@"unsupported arrow position used");
+            break;
+    }
+
+    _arrowIndicator.frame = CGRectMake(x,
+                                       CGRectGetMidY(self.bounds) - 4 + self.titleEdgeInsets.top/2 - self.titleEdgeInsets.bottom/2,
+                                       10,
+                                       10);
+
 }
 
 -(void)openLookup

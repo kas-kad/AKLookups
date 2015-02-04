@@ -51,6 +51,7 @@
 	[_memeLookupBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 	[_memeLookupBtn setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
 	[_memeLookupBtn setBackgroundColor:[UIColor lightGrayColor]];
+    [_memeLookupBtn setArrowPosition:AKLookupsArrowPositionRight];
 	[self.view addSubview:_memeLookupBtn];
 }
 
