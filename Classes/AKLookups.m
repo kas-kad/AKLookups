@@ -67,7 +67,7 @@
     static int margin = 25;
     switch (self.arrowPosition) {
         case AKLookupsArrowPositionAfterTitle:
-            x = CGRectGetMidX(self.bounds) + [title sizeWithMyFont:self.titleLabel.font].width/2;
+            x = CGRectGetMidX(self.bounds) + [title sizeWithMyFont:self.titleLabel.font].width/2 + 10 + self.titleEdgeInsets.left - self.titleEdgeInsets.right;
             break;
         case AKLookupsArrowPositionRight:
             x = CGRectGetWidth(self.frame) - CGRectGetWidth(_arrowIndicator.frame) - margin;
