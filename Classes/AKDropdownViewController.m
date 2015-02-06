@@ -80,9 +80,6 @@
 {
 	NSAssert(_containerViewController, @"containerViewController can not be nil. Use designated initializer `initWithParentViewController:` with correct parameter");
 	self.view.alpha = 1;
-	if ([_delegate respondsToSelector:@selector(lookupsWillOpen:)]){
-		[_delegate lookupsWillOpen:self];
-	}
 	
 	UIView *rootView = _containerViewController.view;
 	self.view.frame = rootView.bounds;
@@ -113,6 +110,10 @@
 	}
 	[self setupBackground];
 	
+    if ([_delegate respondsToSelector:@selector(lookupsWillOpen:)]){
+        [_delegate lookupsWillOpen:self];
+    }
+    
 	[UIView animateWithDuration:0.3f animations:^{
 		_dimmingOverlayView.alpha = 1.0f;
 	}];
