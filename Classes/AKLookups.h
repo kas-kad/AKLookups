@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger, AKLookupsArrowPosition) {
 
 // specify arrow position. default avlue is AKLookupsArrowPositionAfterTitle
 @property (nonatomic, assign) AKLookupsArrowPosition arrowPosition;
-@property (nonatomic, strong) IBOutlet id<AKLookupsListControllerProvider> listProvider;
+@property (nonatomic, weak) IBOutlet id<AKLookupsListControllerProvider> listProvider;
 @property (nonatomic, strong) id<AKLookupsCapableItem> selectedItem;
 
 
