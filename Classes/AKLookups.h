@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 @class AKDropdownViewController;
 @class AKLookups;
+@class AKLookupsListViewController;
 
 typedef NS_ENUM(NSInteger, AKLookupsArrowPosition) {
     AKLookupsArrowPositionLeft,
@@ -21,11 +22,16 @@ typedef NS_ENUM(NSInteger, AKLookupsArrowPosition) {
 @property (nonatomic, strong) NSString* lookupTitle;
 @end
 
+@protocol AKLookupsListControllerProvider <NSObject>
+@required
+- (AKLookupsListViewController *)controllerForLookup:(AKLookups *)lookup;
+@end
+
 @interface AKLookups : UIButton
 
 // specify arrow position. default avlue is AKLookupsArrowPositionAfterTitle
 @property (nonatomic, assign) AKLookupsArrowPosition arrowPosition;
-
+@property (nonatomic, strong) IBOutlet id<AKLookupsListControllerProvider> listProvider;
 @property (nonatomic, strong) id<AKLookupsCapableItem> selectedItem;
 
 

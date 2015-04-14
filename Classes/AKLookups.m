@@ -21,23 +21,43 @@
 
 @implementation AKLookups
 
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self commonInit];
+    }
+    return self;
+}
+
 -(instancetype)initWithLookupViewController:(AKDropdownViewController*)viewController
 {
-	NSAssert(viewController, @"viewController is mandatory");
-	NSAssert([viewController isKindOfClass:[AKDropdownViewController class]], @"viewController must be a subclass of AKDropdownViewController");
 	self = [super init];
 	if (self){
 		_lookupVC = viewController;
-		_selectedItem = nil;
-		[self addTarget:self action:@selector(pressed) forControlEvents:UIControlEventTouchUpInside];
-		
-		_arrowIndicator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"selector_btn_arrow"]];
-		_arrowIndicator.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-		_arrowIndicator.contentMode = UIViewContentModeCenter;
-		[self addSubview:_arrowIndicator];
-		[self selectItem:_selectedItem];
+        [self commonInit];
 	}
 	return self;
+}
+
+- (void)commonInit {
+    _selectedItem = nil;
+    [self addTarget:self action:@selector(pressed) forControlEvents:UIControlEventTouchUpInside];
+    
+    _arrowIndicator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"selector_btn_arrow"]];
+    _arrowIndicator.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    _arrowIndicator.contentMode = UIViewContentModeCenter;
+    [self addSubview:_arrowIndicator];
+    [self selectItem:_selectedItem];
+}
+
+- (AKDropdownViewController *)lookupVC {
+    if (_lookupVC == nil) {
+        if ([self.listProvider respondsToSelector:@selector(controllerForLookup:)]) {
+            _lookupVC = [self.listProvider controllerForLookup:self];
+        }
+    }
+    return _lookupVC;
 }
 
 
@@ -89,7 +109,7 @@
 
 -(void)openLookup
 {
-	[_lookupVC showDropdownViewBelowView:self];
+	[self.lookupVC showDropdownViewBelowView:self];
 	[self openAnimation];
 }
 
@@ -110,7 +130,7 @@
 
 -(void)closeLookup
 {
-	[_lookupVC dismiss];
+	[self.lookupVC dismiss];
 	[self closeAnimation];
 }
 

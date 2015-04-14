@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3757965C1ADD5B6C001B547D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3757965B1ADD5B6C001B547D /* Storyboard.storyboard */; };
 		B9A89C7119277E6D00FC5283 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A89C7019277E6D00FC5283 /* Foundation.framework */; };
 		B9A89C7319277E6D00FC5283 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A89C7219277E6D00FC5283 /* CoreGraphics.framework */; };
 		B9A89C7519277E6D00FC5283 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A89C7419277E6D00FC5283 /* UIKit.framework */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3757965B1ADD5B6C001B547D /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = AKLookups/Storyboard.storyboard; sourceTree = SOURCE_ROOT; };
 		B9A89C6D19277E6D00FC5283 /* AKLookups.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AKLookups.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9A89C7019277E6D00FC5283 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B9A89C7219277E6D00FC5283 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -146,6 +148,7 @@
 				B9A89CA5192780B800FC5283 /* AKLookups */,
 				B9A89C7F19277E6D00FC5283 /* AKAppDelegate.h */,
 				B9A89C8019277E6D00FC5283 /* AKAppDelegate.m */,
+				3757965B1ADD5B6C001B547D /* Storyboard.storyboard */,
 				B9A89C8519277E6D00FC5283 /* AKViewController.h */,
 				B9A89C8619277E6D00FC5283 /* AKViewController.m */,
 				B9A89C8819277E6D00FC5283 /* Images.xcassets */,
@@ -300,6 +303,7 @@
 				B9E667521927C11B006F6E52 /* ym.jpg in Resources */,
 				B9E6674C1927C11B006F6E52 /* do.jpg in Resources */,
 				B9E667501927C11B006F6E52 /* tf.jpg in Resources */,
+				3757965C1ADD5B6C001B547D /* Storyboard.storyboard in Resources */,
 				B9E6674F1927C11B006F6E52 /* og.jpg in Resources */,
 				B9E667531927C11B006F6E52 /* yu.jpg in Resources */,
 				B9E6674D1927C11B006F6E52 /* fa.jpg in Resources */,

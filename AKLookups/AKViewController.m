@@ -10,55 +10,30 @@
 #import "AKViewController.h"
 #import "AKLookups.h"
 #import "AKLookupsListViewController.h"
-@interface AKViewController () <AKLookupsDatasource, AKLookupsListDelegate>
+@interface AKViewController () <AKLookupsDatasource, AKLookupsListDelegate, AKLookupsListControllerProvider>
 {
 	NSArray *_items;
-	UIImageView *_memeImageView;
 	AKMeme *_selectedMeme;
-	AKLookups *_memeLookupBtn;
 	BOOL _menuPresented;
 	AKLookupsListViewController *_listVC;
 }
+@property (weak, nonatomic) IBOutlet UIImageView *memeImageView;
+@property (weak, nonatomic) IBOutlet AKLookups *memeLookupBtn;
 @end
 
 @implementation AKViewController
 
--(id)init
-{
-	if (self = [super init]){
-		_items = @[[AKMeme memeWithTitle:@"Forever Alone" imageName:@"fa.jpg"],
-				   [AKMeme memeWithTitle:@"Trollface" imageName:@"tf.jpg"],
-				   [AKMeme memeWithTitle:@"Me Gusta"  imageName:@"mg.jpg"],
-				   [AKMeme memeWithTitle:@"Y U NO Guy" imageName:@"yu.jpg"],
-				   [AKMeme memeWithTitle:@"Dolan" imageName:@"do.jpg"],
-				   [AKMeme memeWithTitle:@"Yao Ming Face" imageName:@"ym.jpg"],
-				   [AKMeme memeWithTitle:@"Okay Guy" imageName:@"og.jpg"]];
-	}
-	return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStylePlain target:self action:@selector(showMenu:)];
-	_memeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(60.0f, 64.0f, 200.0f, 200.0f)];
-	_memeImageView.backgroundColor = [UIColor lightGrayColor];
-	[self.view addSubview: _memeImageView];
 	
-
-	_memeLookupBtn = [[AKLookups alloc] initWithLookupViewController:self.listVC];
-	_memeLookupBtn.frame = CGRectMake(15.0f, CGRectGetMaxY( _memeImageView.frame ), 290.0f, 44.0f);
-	[_memeLookupBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-	[_memeLookupBtn setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
-	[_memeLookupBtn setBackgroundColor:[UIColor lightGrayColor]];
-    [_memeLookupBtn setArrowPosition:AKLookupsArrowPositionAfterTitle];
-	[self.view addSubview:_memeLookupBtn];
+    [self.memeLookupBtn setArrowPosition:AKLookupsArrowPositionAfterTitle];
 }
 
 #pragma mark - Lookup datasource
 -(NSArray *)lookupsItems
 {
-	return _items;
+	return self.items;
 }
 
 -(id<AKLookupsCapableItem>)lookupsSelectedItem
@@ -70,7 +45,7 @@
 -(void)lookups:(AKDropdownViewController *)lookups didSelectItem:(id<AKLookupsCapableItem>)item
 {
 	_selectedMeme = (AKMeme*)item;
-	_memeImageView.image = [UIImage imageNamed:_selectedMeme.imageName];
+	self.memeImageView.image = [UIImage imageNamed:_selectedMeme.imageName];
 	[_memeLookupBtn selectItem:item];
 	[_memeLookupBtn closeLookup];
 }
@@ -88,16 +63,22 @@
 	_menuPresented = NO;
 }
 
-#pragma mark - Helpers
--(void)showMenu:(id)sender
-{
-	if (!_menuPresented){
-		[self.listVC showDropdownViewBelowView:self.navigationController.navigationBar];
-		_menuPresented = YES;
-	}
+- (AKLookupsListViewController *)controllerForLookup:(AKLookups *)lookup {
+    if ([lookup isEqual:self.memeLookupBtn]) {
+        return self.listVC;
+    }
+    return nil;
 }
 
--(AKLookupsListViewController*)listVC
+#pragma mark - Helpers
+- (IBAction)showMenu:(id)sender {
+    if (!_menuPresented){
+        [self.listVC showDropdownViewBelowView:self.navigationController.navigationBar];
+        _menuPresented = YES;
+    }
+}
+
+- (AKLookupsListViewController*)listVC
 {
 	if (!_listVC){
 		_listVC = [[AKLookupsListViewController alloc] initWithParentViewController:self.navigationController];
@@ -106,5 +87,17 @@
 		_listVC.bottomMargin = 15.0f;
 	}
 	return _listVC;
+}
+- (NSArray *)items {
+    if (_items == nil) {
+        _items = @[[AKMeme memeWithTitle:@"Forever Alone" imageName:@"fa.jpg"],
+                   [AKMeme memeWithTitle:@"Trollface" imageName:@"tf.jpg"],
+                   [AKMeme memeWithTitle:@"Me Gusta"  imageName:@"mg.jpg"],
+                   [AKMeme memeWithTitle:@"Y U NO Guy" imageName:@"yu.jpg"],
+                   [AKMeme memeWithTitle:@"Dolan" imageName:@"do.jpg"],
+                   [AKMeme memeWithTitle:@"Yao Ming Face" imageName:@"ym.jpg"],
+                   [AKMeme memeWithTitle:@"Okay Guy" imageName:@"og.jpg"]];
+    }
+    return _items;
 }
 @end
