@@ -68,6 +68,7 @@
     } else {
         [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
     }
+	cell.imageView.image = [item lookupImage];
 	cell.textLabel.text = [item lookupTitle];
 }
 
