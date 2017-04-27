@@ -5,17 +5,17 @@ AKLookups class implements a drop-down list for selecting particular value of se
 
 ![iOS AKLookups control](http://cdn.makeagif.com/media/5-17-2014/GlTvIy.gif)
 
-###Installing using CocoaPods
+### Installing using CocoaPods
 Add the following to your Podfile.
 ```ruby
 pod 'AKLookups', '~> 1.0'
 ```
 
 
-###Demo
+### Demo
 [YouTube HD demo](http://www.youtube.com/watch?v=KFr1NKRbyx8)
 
-###Real application example
+### Real application example
 [YouTube HD demo #1](http://www.youtube.com/watch?v=Y79dPJWPJTc)
 
 [YouTube HD demo #2 (Habrahabr app)](http://www.youtube.com/watch?v=twdWhnSZpic)
