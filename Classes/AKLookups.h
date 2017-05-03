@@ -19,6 +19,7 @@ typedef NS_ENUM(NSInteger, AKLookupsArrowPosition) {
 @protocol AKLookupsCapableItem <NSObject>
 @required
 @property (nonatomic, strong) NSString* lookupTitle;
+@property (nonatomic, strong) UIImage* lookupImage;
 @end
 
 @interface AKLookups : UIButton
